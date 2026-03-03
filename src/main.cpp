@@ -13,6 +13,30 @@ static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
+// Mouse state for iMouse
+static double gMouseX = 0.0, gMouseY = 0.0;
+static double gClickX = 0.0, gClickY = 0.0;
+static int gMouseDown = 0;
+
+static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos) {
+    gMouseX = xpos;
+    gMouseY = ypos;
+}
+
+static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT) {
+        if (action == GLFW_PRESS) {
+            gMouseDown = 1;
+            gClickX = gMouseX;
+            gClickY = gMouseY;
+            std::cout << "MOUSE PRESS at: " << gMouseX << "," << gMouseY << std::endl;
+        } else if (action == GLFW_RELEASE) {
+            gMouseDown = 0;
+            std::cout << "MOUSE RELEASE at: " << gMouseX << "," << gMouseY << std::endl;
+        }
+    }
+}
+
 int main(int argc, char** argv) {
     const char* fragPath = "./Shadertoy_Fragment/morph_sphere_cube.frag";
     if (argc > 1) fragPath = argv[1];
@@ -33,6 +57,8 @@ int main(int argc, char** argv) {
     if (!window) { glfwTerminate(); return -1; }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetCursorPosCallback(window, cursor_pos_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
 
     #if !defined(__APPLE__)
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -80,8 +106,17 @@ void main(){ vUV = aPos * 0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }
         glUseProgram(program);
         GLint resLoc = glGetUniformLocation(program, "iResolution");
         GLint timeLoc = glGetUniformLocation(program, "iTime");
+        GLint mouseLoc = glGetUniformLocation(program, "iMouse");
         if (resLoc >= 0) glUniform3f(resLoc, (float)w, (float)h, 1.0f);
         if (timeLoc >= 0) glUniform1f(timeLoc, (float)glfwGetTime());
+        if (mouseLoc >= 0) {
+            // Convert GLFW cursor y (top-left origin) to GLSL fragCoord (bottom-left origin)
+            float my = (float)h - (float)gMouseY;
+            float cmy = (float)h - (float)gClickY;
+            float cx = gMouseDown ? (float)gClickX : 0.0f;
+            float cy = gMouseDown ? cmy : 0.0f;
+            glUniform4f(mouseLoc, (float)gMouseX, my, cx, cy);
+        }
 
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 6);
