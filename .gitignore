@@ -26,6 +26,7 @@ shader_app
 
 # Editor/IDE
 .vscode/
+!/.vscode/settings.json
 .idea/
 *.swp
 *~
