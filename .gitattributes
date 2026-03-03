@@ -1,0 +1,12 @@
+# GitHub Linguist overrides: treat shader files as GLSL and src as C++
+*.frag linguist-language=GLSL
+*.vert linguist-language=GLSL
+*.geom linguist-language=GLSL
+*.glsl linguist-language=GLSL
+
+Shadertoy_Fragment/* linguist-language=GLSL
+src/** linguist-language=C++
+
+# Mark build and deps as vendored so they don't affect language stats
+/build/** linguist-vendored
+/_deps/** linguist-vendored
