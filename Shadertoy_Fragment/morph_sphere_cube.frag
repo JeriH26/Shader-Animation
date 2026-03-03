@@ -32,9 +32,26 @@ vec3 calcNormal(vec3 p) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = (2.0 * fragCoord - iResolution.xy) / iResolution.y;
 
-    // Camera
-    vec3 ro = vec3(0.0, 0.0, 2.6);
-    vec3 rd = normalize(vec3(uv, -1.8));
+    // Mouse-based camera control (iMouse: xy=current, zw=click)
+    vec2 mouse = iMouse.xy;
+    vec2 click = iMouse.zw;
+    vec2 drag = vec2(0.0);
+    if (click.x > 0.0 || click.y > 0.0) {
+        drag = mouse - click; // pixel delta while dragging
+    }
+    // map pixel drag -> angles
+    float yaw = -drag.x * 0.01; // horizontal
+    float pitch = clamp(drag.y * 0.01, -1.4, 1.4); // vertical
+
+    // Camera position on a sphere of radius r around origin, controlled by yaw/pitch
+    float r = 2.6;
+    vec3 ro = vec3(sin(yaw) * cos(pitch), sin(pitch), cos(yaw) * cos(pitch)) * r;
+
+    // Build camera basis and ray direction from uv
+    vec3 forward = normalize(-ro);
+    vec3 right = normalize(cross(vec3(0.0, 1.0, 0.0), forward));
+    vec3 up = cross(forward, right);
+    vec3 rd = normalize(forward + uv.x * right + uv.y * up);
 
     // Light
     vec3 lightDir = normalize(vec3(0.6, 0.7, 0.5));
