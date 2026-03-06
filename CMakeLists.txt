@@ -14,7 +14,10 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glfw)
 
 add_executable(shader_app
+  src/app_options.cpp
+  src/frame_profiler.cpp
   src/main.cpp
+  src/performance_profiler.cpp
   src/shader.cpp
 )
 

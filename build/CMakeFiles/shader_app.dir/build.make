@@ -72,10 +72,38 @@ include CMakeFiles/shader_app.dir/flags.make
 CMakeFiles/shader_app.dir/codegen:
 .PHONY : CMakeFiles/shader_app.dir/codegen
 
+CMakeFiles/shader_app.dir/src/app_options.cpp.o: CMakeFiles/shader_app.dir/flags.make
+CMakeFiles/shader_app.dir/src/app_options.cpp.o: /Users/huangjunyi/Documents/Github/Shader-Animation/src/app_options.cpp
+CMakeFiles/shader_app.dir/src/app_options.cpp.o: CMakeFiles/shader_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/shader_app.dir/src/app_options.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/shader_app.dir/src/app_options.cpp.o -MF CMakeFiles/shader_app.dir/src/app_options.cpp.o.d -o CMakeFiles/shader_app.dir/src/app_options.cpp.o -c /Users/huangjunyi/Documents/Github/Shader-Animation/src/app_options.cpp
+
+CMakeFiles/shader_app.dir/src/app_options.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/shader_app.dir/src/app_options.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangjunyi/Documents/Github/Shader-Animation/src/app_options.cpp > CMakeFiles/shader_app.dir/src/app_options.cpp.i
+
+CMakeFiles/shader_app.dir/src/app_options.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/shader_app.dir/src/app_options.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangjunyi/Documents/Github/Shader-Animation/src/app_options.cpp -o CMakeFiles/shader_app.dir/src/app_options.cpp.s
+
+CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o: CMakeFiles/shader_app.dir/flags.make
+CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o: /Users/huangjunyi/Documents/Github/Shader-Animation/src/frame_profiler.cpp
+CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o: CMakeFiles/shader_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o -MF CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o.d -o CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o -c /Users/huangjunyi/Documents/Github/Shader-Animation/src/frame_profiler.cpp
+
+CMakeFiles/shader_app.dir/src/frame_profiler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/shader_app.dir/src/frame_profiler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangjunyi/Documents/Github/Shader-Animation/src/frame_profiler.cpp > CMakeFiles/shader_app.dir/src/frame_profiler.cpp.i
+
+CMakeFiles/shader_app.dir/src/frame_profiler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/shader_app.dir/src/frame_profiler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangjunyi/Documents/Github/Shader-Animation/src/frame_profiler.cpp -o CMakeFiles/shader_app.dir/src/frame_profiler.cpp.s
+
 CMakeFiles/shader_app.dir/src/main.cpp.o: CMakeFiles/shader_app.dir/flags.make
 CMakeFiles/shader_app.dir/src/main.cpp.o: /Users/huangjunyi/Documents/Github/Shader-Animation/src/main.cpp
 CMakeFiles/shader_app.dir/src/main.cpp.o: CMakeFiles/shader_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/shader_app.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/shader_app.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/shader_app.dir/src/main.cpp.o -MF CMakeFiles/shader_app.dir/src/main.cpp.o.d -o CMakeFiles/shader_app.dir/src/main.cpp.o -c /Users/huangjunyi/Documents/Github/Shader-Animation/src/main.cpp
 
 CMakeFiles/shader_app.dir/src/main.cpp.i: cmake_force
@@ -86,10 +114,24 @@ CMakeFiles/shader_app.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/shader_app.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangjunyi/Documents/Github/Shader-Animation/src/main.cpp -o CMakeFiles/shader_app.dir/src/main.cpp.s
 
+CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o: CMakeFiles/shader_app.dir/flags.make
+CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o: /Users/huangjunyi/Documents/Github/Shader-Animation/src/performance_profiler.cpp
+CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o: CMakeFiles/shader_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o -MF CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o.d -o CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o -c /Users/huangjunyi/Documents/Github/Shader-Animation/src/performance_profiler.cpp
+
+CMakeFiles/shader_app.dir/src/performance_profiler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/shader_app.dir/src/performance_profiler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/huangjunyi/Documents/Github/Shader-Animation/src/performance_profiler.cpp > CMakeFiles/shader_app.dir/src/performance_profiler.cpp.i
+
+CMakeFiles/shader_app.dir/src/performance_profiler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/shader_app.dir/src/performance_profiler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/huangjunyi/Documents/Github/Shader-Animation/src/performance_profiler.cpp -o CMakeFiles/shader_app.dir/src/performance_profiler.cpp.s
+
 CMakeFiles/shader_app.dir/src/shader.cpp.o: CMakeFiles/shader_app.dir/flags.make
 CMakeFiles/shader_app.dir/src/shader.cpp.o: /Users/huangjunyi/Documents/Github/Shader-Animation/src/shader.cpp
 CMakeFiles/shader_app.dir/src/shader.cpp.o: CMakeFiles/shader_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/shader_app.dir/src/shader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/shader_app.dir/src/shader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/shader_app.dir/src/shader.cpp.o -MF CMakeFiles/shader_app.dir/src/shader.cpp.o.d -o CMakeFiles/shader_app.dir/src/shader.cpp.o -c /Users/huangjunyi/Documents/Github/Shader-Animation/src/shader.cpp
 
 CMakeFiles/shader_app.dir/src/shader.cpp.i: cmake_force
@@ -102,18 +144,24 @@ CMakeFiles/shader_app.dir/src/shader.cpp.s: cmake_force
 
 # Object files for target shader_app
 shader_app_OBJECTS = \
+"CMakeFiles/shader_app.dir/src/app_options.cpp.o" \
+"CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o" \
 "CMakeFiles/shader_app.dir/src/main.cpp.o" \
+"CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o" \
 "CMakeFiles/shader_app.dir/src/shader.cpp.o"
 
 # External object files for target shader_app
 shader_app_EXTERNAL_OBJECTS =
 
+shader_app: CMakeFiles/shader_app.dir/src/app_options.cpp.o
+shader_app: CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o
 shader_app: CMakeFiles/shader_app.dir/src/main.cpp.o
+shader_app: CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o
 shader_app: CMakeFiles/shader_app.dir/src/shader.cpp.o
 shader_app: CMakeFiles/shader_app.dir/build.make
 shader_app: _deps/glfw-build/src/libglfw3.a
 shader_app: CMakeFiles/shader_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable shader_app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/huangjunyi/Documents/Github/Shader-Animation/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable shader_app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/shader_app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

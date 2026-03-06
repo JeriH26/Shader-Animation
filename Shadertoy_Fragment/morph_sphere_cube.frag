@@ -1,5 +1,6 @@
 // Shadertoy-compatible fragment shader
 // Sphere <-> Cube morph loop
+uniform vec2 iOrbit; // host-provided yaw/pitch, persistent across drags
 
 float sdSphere(vec3 p, float r) {
     return length(p) - r;
@@ -32,16 +33,9 @@ vec3 calcNormal(vec3 p) {
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     vec2 uv = (2.0 * fragCoord - iResolution.xy) / iResolution.y;
 
-    // Mouse-based camera control (iMouse: xy=current, zw=click)
-    vec2 mouse = iMouse.xy;
-    vec2 click = iMouse.zw;
-    vec2 drag = vec2(0.0);
-    if (click.x > 0.0 || click.y > 0.0) {
-        drag = mouse - click; // pixel delta while dragging
-    }
-    // map pixel drag -> angles
-    float yaw = -drag.x * 0.01; // horizontal
-    float pitch = clamp(drag.y * 0.01, -1.4, 1.4); // vertical
+    // Persistent camera angles from host (no jump when drag restarts).
+    float yaw = iOrbit.x;
+    float pitch = iOrbit.y;
 
     // Camera position on a sphere of radius r around origin, controlled by yaw/pitch
     float r = 2.6;

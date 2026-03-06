@@ -590,6 +590,54 @@ windows/fast:
 	$(MAKE) $(MAKESILENT) -f _deps/glfw-build/tests/CMakeFiles/windows.dir/build.make _deps/glfw-build/tests/CMakeFiles/windows.dir/build
 .PHONY : windows/fast
 
+src/app_options.o: src/app_options.cpp.o
+.PHONY : src/app_options.o
+
+# target to build an object file
+src/app_options.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/app_options.cpp.o
+.PHONY : src/app_options.cpp.o
+
+src/app_options.i: src/app_options.cpp.i
+.PHONY : src/app_options.i
+
+# target to preprocess a source file
+src/app_options.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/app_options.cpp.i
+.PHONY : src/app_options.cpp.i
+
+src/app_options.s: src/app_options.cpp.s
+.PHONY : src/app_options.s
+
+# target to generate assembly for a file
+src/app_options.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/app_options.cpp.s
+.PHONY : src/app_options.cpp.s
+
+src/frame_profiler.o: src/frame_profiler.cpp.o
+.PHONY : src/frame_profiler.o
+
+# target to build an object file
+src/frame_profiler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o
+.PHONY : src/frame_profiler.cpp.o
+
+src/frame_profiler.i: src/frame_profiler.cpp.i
+.PHONY : src/frame_profiler.i
+
+# target to preprocess a source file
+src/frame_profiler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/frame_profiler.cpp.i
+.PHONY : src/frame_profiler.cpp.i
+
+src/frame_profiler.s: src/frame_profiler.cpp.s
+.PHONY : src/frame_profiler.s
+
+# target to generate assembly for a file
+src/frame_profiler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/frame_profiler.cpp.s
+.PHONY : src/frame_profiler.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -613,6 +661,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/performance_profiler.o: src/performance_profiler.cpp.o
+.PHONY : src/performance_profiler.o
+
+# target to build an object file
+src/performance_profiler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o
+.PHONY : src/performance_profiler.cpp.o
+
+src/performance_profiler.i: src/performance_profiler.cpp.i
+.PHONY : src/performance_profiler.i
+
+# target to preprocess a source file
+src/performance_profiler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/performance_profiler.cpp.i
+.PHONY : src/performance_profiler.cpp.i
+
+src/performance_profiler.s: src/performance_profiler.cpp.s
+.PHONY : src/performance_profiler.s
+
+# target to generate assembly for a file
+src/performance_profiler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/performance_profiler.cpp.s
+.PHONY : src/performance_profiler.cpp.s
 
 src/shader.o: src/shader.cpp.o
 .PHONY : src/shader.o
@@ -683,9 +755,18 @@ help:
 	@echo "... triangle-vulkan"
 	@echo "... wave"
 	@echo "... windows"
+	@echo "... src/app_options.o"
+	@echo "... src/app_options.i"
+	@echo "... src/app_options.s"
+	@echo "... src/frame_profiler.o"
+	@echo "... src/frame_profiler.i"
+	@echo "... src/frame_profiler.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/performance_profiler.o"
+	@echo "... src/performance_profiler.i"
+	@echo "... src/performance_profiler.s"
 	@echo "... src/shader.o"
 	@echo "... src/shader.i"
 	@echo "... src/shader.s"

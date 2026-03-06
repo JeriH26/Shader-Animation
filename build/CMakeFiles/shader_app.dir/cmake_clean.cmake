@@ -1,6 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/shader_app.dir/src/app_options.cpp.o"
+  "CMakeFiles/shader_app.dir/src/app_options.cpp.o.d"
+  "CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o"
+  "CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o.d"
   "CMakeFiles/shader_app.dir/src/main.cpp.o"
   "CMakeFiles/shader_app.dir/src/main.cpp.o.d"
+  "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o"
+  "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o.d"
   "CMakeFiles/shader_app.dir/src/shader.cpp.o"
   "CMakeFiles/shader_app.dir/src/shader.cpp.o.d"
   "shader_app"

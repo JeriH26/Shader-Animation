@@ -6,7 +6,5 @@ C_DEFINES = -D_GLFW_USE_CONFIG_H
 
 C_INCLUDES = -I/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glfw-src/include -I/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glfw-src/src -I/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glfw-build/src
 
-C_FLAGSarm64 = -std=gnu99 -arch arm64 -fPIC -Wall
-
-C_FLAGS = -std=gnu99 -arch arm64 -fPIC -Wall
+C_FLAGS = -std=gnu99 -fPIC -Wall
 
