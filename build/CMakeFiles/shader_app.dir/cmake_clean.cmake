@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o.d"
   "CMakeFiles/shader_app.dir/src/main.cpp.o"
   "CMakeFiles/shader_app.dir/src/main.cpp.o.d"
+  "CMakeFiles/shader_app.dir/src/mouse_controller.cpp.o"
+  "CMakeFiles/shader_app.dir/src/mouse_controller.cpp.o.d"
   "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o"
   "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o.d"
   "CMakeFiles/shader_app.dir/src/shader.cpp.o"

@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/huangjunyi/Documents/Github/Shader-Animation/src/app_options.cpp" "CMakeFiles/shader_app.dir/src/app_options.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/app_options.cpp.o.d"
   "/Users/huangjunyi/Documents/Github/Shader-Animation/src/frame_profiler.cpp" "CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/frame_profiler.cpp.o.d"
   "/Users/huangjunyi/Documents/Github/Shader-Animation/src/main.cpp" "CMakeFiles/shader_app.dir/src/main.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/main.cpp.o.d"
+  "/Users/huangjunyi/Documents/Github/Shader-Animation/src/mouse_controller.cpp" "CMakeFiles/shader_app.dir/src/mouse_controller.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/mouse_controller.cpp.o.d"
   "/Users/huangjunyi/Documents/Github/Shader-Animation/src/performance_profiler.cpp" "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/performance_profiler.cpp.o.d"
   "/Users/huangjunyi/Documents/Github/Shader-Animation/src/shader.cpp" "CMakeFiles/shader_app.dir/src/shader.cpp.o" "gcc" "CMakeFiles/shader_app.dir/src/shader.cpp.o.d"
   )

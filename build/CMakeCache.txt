@@ -190,9 +190,6 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 // inside the indicated SDK.
 CMAKE_OSX_SYSROOT:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_POLICY_VERSION_MINIMUM:UNINITIALIZED=3.5
-
 //Value Computed by CMake
 CMAKE_PROJECT_COMPAT_VERSION:STATIC=
 
@@ -308,68 +305,17 @@ FETCHCONTENT_FULLY_DISCONNECTED:BOOL=OFF
 FETCHCONTENT_QUIET:BOOL=ON
 
 //When not empty, overrides where to find pre-populated content
-// for glad
-FETCHCONTENT_SOURCE_DIR_GLAD:PATH=
-
-//When not empty, overrides where to find pre-populated content
 // for glfw
 FETCHCONTENT_SOURCE_DIR_GLFW:PATH=
 
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
-//Enables UPDATE_DISCONNECTED behavior just for population of glad
-FETCHCONTENT_UPDATES_DISCONNECTED_GLAD:BOOL=OFF
-
 //Enables UPDATE_DISCONNECTED behavior just for population of glfw
 FETCHCONTENT_UPDATES_DISCONNECTED_GLFW:BOOL=OFF
 
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=/usr/bin/git
-
-//Include all extensions instead of those specified by GLAD_EXTENSIONS
-GLAD_ALL_EXTENSIONS:BOOL=OFF
-
-//API type/version pairs, like "gl=3.2,gles=", no version means
-// latest
-GLAD_API:STRING=
-
-//Value Computed by CMake
-GLAD_BINARY_DIR:STATIC=/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glad-build
-
-//Set export variables for external project
-GLAD_EXPORT:BOOL=ON
-
-//Path to extensions file or comma separated list of extensions,
-// if missing all extensions are included
-GLAD_EXTENSIONS:STRING=
-
-//Language to generate the binding for
-GLAD_GENERATOR:STRING=c
-
-//Generate installation target
-GLAD_INSTALL:BOOL=OFF
-
-//Value Computed by CMake
-GLAD_IS_TOP_LEVEL:STATIC=OFF
-
-//No loader
-GLAD_NO_LOADER:BOOL=OFF
-
-//Output directory
-GLAD_OUT_DIR:STRING=/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glad-build
-
-//OpenGL profile
-GLAD_PROFILE:STRING=compatibility
-
-//Reproducible build
-GLAD_REPRODUCIBLE:BOOL=OFF
-
-//Value Computed by CMake
-GLAD_SOURCE_DIR:STATIC=/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glad-src
-
-//Name of the spec
-GLAD_SPEC:STRING=gl
 
 //Value Computed by CMake
 GLFW_BINARY_DIR:STATIC=/Users/huangjunyi/Documents/Github/Shader-Animation/build/_deps/glfw-build
@@ -595,23 +541,10 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: DOXYGEN_EXECUTABLE
 DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
-//Details about finding Python
-FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13][found components: Interpreter ][v3.13.3()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
-//Compiler reason failure
-_Python_Compiler_REASON_FAILURE:INTERNAL=
-//Development reason failure
-_Python_Development_REASON_FAILURE:INTERNAL=
-//Path to a program.
-_Python_EXECUTABLE:INTERNAL=/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13
-//Python Properties
-_Python_INTERPRETER_PROPERTIES:INTERNAL=Python;3;13;3;64;32;<none>;cpython-313-darwin;abi3;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages;/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages
-_Python_INTERPRETER_SIGNATURE:INTERNAL=9e6912d89a4d0d3afbdf9e7744974145
-//NumPy reason failure
-_Python_NumPy_REASON_FAILURE:INTERNAL=
 

@@ -65,6 +65,16 @@ CMAKE_BINARY_DIR = /Users/huangjunyi/Documents/Github/Shader-Animation/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/opt/homebrew/bin/ctest $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake cache editor..."
@@ -173,6 +183,19 @@ shader_app: cmake_check_build_system
 shader_app/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/build
 .PHONY : shader_app/fast
+
+#=============================================================================
+# Target rules for targets named mouse_controller_test
+
+# Build rule for target.
+mouse_controller_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mouse_controller_test
+.PHONY : mouse_controller_test
+
+# fast build rule for target.
+mouse_controller_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/build
+.PHONY : mouse_controller_test/fast
 
 #=============================================================================
 # Target rules for targets named uninstall
@@ -662,6 +685,57 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/mouse_controller.o: src/mouse_controller.cpp.o
+.PHONY : src/mouse_controller.o
+
+# target to build an object file
+src/mouse_controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/mouse_controller.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller.cpp.o
+.PHONY : src/mouse_controller.cpp.o
+
+src/mouse_controller.i: src/mouse_controller.cpp.i
+.PHONY : src/mouse_controller.i
+
+# target to preprocess a source file
+src/mouse_controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/mouse_controller.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller.cpp.i
+.PHONY : src/mouse_controller.cpp.i
+
+src/mouse_controller.s: src/mouse_controller.cpp.s
+.PHONY : src/mouse_controller.s
+
+# target to generate assembly for a file
+src/mouse_controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shader_app.dir/build.make CMakeFiles/shader_app.dir/src/mouse_controller.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller.cpp.s
+.PHONY : src/mouse_controller.cpp.s
+
+src/mouse_controller_test.o: src/mouse_controller_test.cpp.o
+.PHONY : src/mouse_controller_test.o
+
+# target to build an object file
+src/mouse_controller_test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller_test.cpp.o
+.PHONY : src/mouse_controller_test.cpp.o
+
+src/mouse_controller_test.i: src/mouse_controller_test.cpp.i
+.PHONY : src/mouse_controller_test.i
+
+# target to preprocess a source file
+src/mouse_controller_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller_test.cpp.i
+.PHONY : src/mouse_controller_test.cpp.i
+
+src/mouse_controller_test.s: src/mouse_controller_test.cpp.s
+.PHONY : src/mouse_controller_test.s
+
+# target to generate assembly for a file
+src/mouse_controller_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mouse_controller_test.dir/build.make CMakeFiles/mouse_controller_test.dir/src/mouse_controller_test.cpp.s
+.PHONY : src/mouse_controller_test.cpp.s
+
 src/performance_profiler.o: src/performance_profiler.cpp.o
 .PHONY : src/performance_profiler.o
 
@@ -722,6 +796,7 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... uninstall"
 	@echo "... update_mappings"
 	@echo "... boing"
@@ -739,6 +814,7 @@ help:
 	@echo "... inputlag"
 	@echo "... joysticks"
 	@echo "... monitors"
+	@echo "... mouse_controller_test"
 	@echo "... msaa"
 	@echo "... offscreen"
 	@echo "... opacity"
@@ -764,6 +840,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/mouse_controller.o"
+	@echo "... src/mouse_controller.i"
+	@echo "... src/mouse_controller.s"
+	@echo "... src/mouse_controller_test.o"
+	@echo "... src/mouse_controller_test.i"
+	@echo "... src/mouse_controller_test.s"
 	@echo "... src/performance_profiler.o"
 	@echo "... src/performance_profiler.i"
 	@echo "... src/performance_profiler.s"

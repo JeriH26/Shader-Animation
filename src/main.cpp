@@ -8,6 +8,7 @@
 #include "shader.h"
 #include "app_options.h"
 #include "frame_profiler.h"
+#include "mouse_controller.h"
 
 #include <iostream>
 
@@ -15,46 +16,37 @@ static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-// Mouse state for iMouse
-static double gMouseX = 0.0, gMouseY = 0.0;
-static double gClickX = 0.0, gClickY = 0.0;
-static int gMouseDown = 0;
-static float gOrbitYaw = 0.0f;
-static float gOrbitPitch = 0.0f;
-static float gDragStartYaw = 0.0f;
-static float gDragStartPitch = 0.0f;
-static double gDragStartX = 0.0, gDragStartY = 0.0;
+// Global mouse controller
+static MouseController g_mouseController;
 
 static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos) {
-    gMouseX = xpos;
-    gMouseY = ypos;
-    if (gMouseDown) {
-        const float kSensitivity = 0.01f;
-        const float dy = static_cast<float>(ypos - gDragStartY);
-        const float dx = static_cast<float>(xpos - gDragStartX);
-        gOrbitYaw = gDragStartYaw - dx * kSensitivity;
-        gOrbitPitch = gDragStartPitch + dy * kSensitivity;
-        if (gOrbitPitch > 1.4f) gOrbitPitch = 1.4f;
-        if (gOrbitPitch < -1.4f) gOrbitPitch = -1.4f;
-    }
+    (void)window;
+    g_mouseController.onCursorMove(xpos, ypos);
 }
 
 static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
+    (void)window;
+    (void)mods;
     if (button == GLFW_MOUSE_BUTTON_LEFT) {
         if (action == GLFW_PRESS) {
-            gMouseDown = 1;
-            gClickX = gMouseX;
-            gClickY = gMouseY;
-            gDragStartX = gMouseX;
-            gDragStartY = gMouseY;
-            gDragStartYaw = gOrbitYaw;
-            gDragStartPitch = gOrbitPitch;
-            std::cout << "MOUSE PRESS at: " << gMouseX << "," << gMouseY << std::endl;
+            g_mouseController.onMouseButton(true);
+            int ww = 0, wh = 0;
+            int w = 0, h = 0;
+            glfwGetWindowSize(window, &ww, &wh);
+            glfwGetFramebufferSize(window, &w, &h);
+            g_mouseController.toggleLightByScreenClick((float)ww, (float)wh, (float)w, (float)h);
+            std::cout << "MOUSE PRESS at: " << g_mouseController.getCursorX() << "," << g_mouseController.getCursorY() << std::endl;
         } else if (action == GLFW_RELEASE) {
-            gMouseDown = 0;
-            std::cout << "MOUSE RELEASE at: " << gMouseX << "," << gMouseY << std::endl;
+            g_mouseController.onMouseButton(false);
+            std::cout << "MOUSE RELEASE at: " << g_mouseController.getCursorX() << "," << g_mouseController.getCursorY() << std::endl;
         }
     }
+}
+
+static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset) {
+    (void)window;
+    (void)xoffset;
+    g_mouseController.onScroll(yoffset);
 }
 
 int main(int argc, char** argv) {
@@ -81,6 +73,7 @@ int main(int argc, char** argv) {
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, cursor_pos_callback);
     glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetScrollCallback(window, scroll_callback);
 
     #if !defined(__APPLE__)
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -134,16 +127,17 @@ void main(){ vUV = aPos * 0.5 + 0.5; gl_Position = vec4(aPos, 0.0, 1.0); }
         GLint timeLoc = glGetUniformLocation(program, "iTime");
         GLint mouseLoc = glGetUniformLocation(program, "iMouse");
         GLint orbitLoc = glGetUniformLocation(program, "iOrbit");
+        GLint lightToggleLoc = glGetUniformLocation(program, "iLightOn");
+        GLint distanceLoc = glGetUniformLocation(program, "iDistance");
         if (resLoc >= 0) glUniform3f(resLoc, (float)w, (float)h, 1.0f);
         if (timeLoc >= 0) glUniform1f(timeLoc, (float)glfwGetTime());
-        if (orbitLoc >= 0) glUniform2f(orbitLoc, gOrbitYaw, gOrbitPitch);
+        if (orbitLoc >= 0) glUniform2f(orbitLoc, g_mouseController.getYaw(), g_mouseController.getPitch());
+        if (lightToggleLoc >= 0) glUniform1f(lightToggleLoc, g_mouseController.isLightEnabled() ? 1.0f : 0.0f);
+        if (distanceLoc >= 0) glUniform1f(distanceLoc, g_mouseController.getDistance());
         if (mouseLoc >= 0) {
-            // Convert GLFW cursor y (top-left origin) to GLSL fragCoord (bottom-left origin)
-            float my = (float)h - (float)gMouseY;
-            float cmy = (float)h - (float)gClickY;
-            float cx = gMouseDown ? (float)gClickX : 0.0f;
-            float cy = gMouseDown ? cmy : 0.0f;
-            glUniform4f(mouseLoc, (float)gMouseX, my, cx, cy);
+            float iMouse[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+            g_mouseController.buildIMouse((float)h, iMouse);
+            glUniform4f(mouseLoc, iMouse[0], iMouse[1], iMouse[2], iMouse[3]);
         }
 
         glBindVertexArray(VAO);

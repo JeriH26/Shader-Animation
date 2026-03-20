@@ -19,9 +19,19 @@ add_executable(shader_app
   src/main.cpp
   src/performance_profiler.cpp
   src/shader.cpp
+  src/mouse_controller.cpp
 )
 
 target_link_libraries(shader_app PRIVATE glfw)
+
+# Unit tests for mouse controller
+add_executable(mouse_controller_test
+  src/mouse_controller.cpp
+  src/mouse_controller_test.cpp
+)
+
+enable_testing()
+add_test(NAME MouseControllerTest COMMAND mouse_controller_test)
 
 if(NOT APPLE)
   message(WARNING "Non-Apple platforms currently require GLAD; please add a loader or enable FetchContent for GLAD.")
