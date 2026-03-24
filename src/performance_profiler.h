@@ -24,6 +24,9 @@ public:
     void initializeGpuTimer();
     void beginFrame();
     void markCpuSubmitEnd();
+    void markSwapBegin();
+    void markSwapEnd();
+    void markEventPollEnd();
     void beginGpuSection();
     void endGpuSection();
     void endFrame();
@@ -67,9 +70,14 @@ private:
     std::int64_t startNs_ = 0;
     std::int64_t frameStartNs_ = 0;
     std::int64_t cpuSubmitEndNs_ = 0;
+    std::int64_t swapStartNs_ = 0;
+    std::int64_t swapEndNs_ = 0;
+    std::int64_t eventPollEndNs_ = 0;
     std::int64_t lastPrintNs_ = 0;
 
     Stats cpuSubmitMs_;
     Stats cpuFrameMs_;
+    Stats swapWaitMs_;
+    Stats eventPollMs_;
     Stats gpuFrameMs_;
 };

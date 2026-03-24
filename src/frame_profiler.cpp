@@ -22,6 +22,18 @@ void FrameProfiler::markCpuSubmitEnd() {
     profiler_.markCpuSubmitEnd();
 }
 
+void FrameProfiler::markSwapBegin() {
+    profiler_.markSwapBegin();
+}
+
+void FrameProfiler::markSwapEnd() {
+    profiler_.markSwapEnd();
+}
+
+void FrameProfiler::markEventPollEnd() {
+    profiler_.markEventPollEnd();
+}
+
 void FrameProfiler::endFrame() {
     profiler_.endFrame();
 }

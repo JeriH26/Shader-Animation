@@ -105,11 +105,29 @@ void PerformanceProfiler::beginFrame() {
     if (!config_.enabled) return;
     frameStartNs_ = nowNs();
     cpuSubmitEndNs_ = frameStartNs_;
+    swapStartNs_ = frameStartNs_;
+    swapEndNs_ = frameStartNs_;
+    eventPollEndNs_ = frameStartNs_;
 }
 
 void PerformanceProfiler::markCpuSubmitEnd() {
     if (!config_.enabled) return;
     cpuSubmitEndNs_ = nowNs();
+}
+
+void PerformanceProfiler::markSwapBegin() {
+    if (!config_.enabled) return;
+    swapStartNs_ = nowNs();
+}
+
+void PerformanceProfiler::markSwapEnd() {
+    if (!config_.enabled) return;
+    swapEndNs_ = nowNs();
+}
+
+void PerformanceProfiler::markEventPollEnd() {
+    if (!config_.enabled) return;
+    eventPollEndNs_ = nowNs();
 }
 
 void PerformanceProfiler::beginGpuSection() {
@@ -132,16 +150,25 @@ void PerformanceProfiler::endFrame() {
 
     ++frameCounter_;
     const std::int64_t now = nowNs();
+    const std::int64_t swapStart = std::max(swapStartNs_, cpuSubmitEndNs_);
+    const std::int64_t swapEnd = std::max(swapEndNs_, swapStart);
+    const std::int64_t pollEnd = std::max(eventPollEndNs_, swapEnd);
+
     const double cpuSubmitMs = static_cast<double>(cpuSubmitEndNs_ - frameStartNs_) / 1e6;
     const double cpuFrameMs = static_cast<double>(now - frameStartNs_) / 1e6;
+    const double swapWaitMs = static_cast<double>(swapEnd - swapStart) / 1e6;
+    const double eventPollMs = static_cast<double>(pollEnd - swapEnd) / 1e6;
+
     cpuSubmitMs_.add(cpuSubmitMs);
     cpuFrameMs_.add(cpuFrameMs);
+    swapWaitMs_.add(swapWaitMs);
+    eventPollMs_.add(eventPollMs);
 
     flushAvailableGpuQueries(false);
 
     if (csv_) {
         if (!csvHeaderWritten_) {
-            csv_ << "frame,cpu_submit_ms,cpu_frame_ms,gpu_ms\n";
+            csv_ << "frame,cpu_submit_ms,cpu_frame_ms,swap_wait_ms,event_poll_ms,gpu_ms\n";
             csvHeaderWritten_ = true;
         }
 
@@ -151,7 +178,7 @@ void PerformanceProfiler::endFrame() {
             lastGpuMs = gpuIt->second;
             resolvedGpuMsByFrame_.erase(gpuIt);
         }
-        csv_ << frameCounter_ << ',' << cpuSubmitMs << ',' << cpuFrameMs << ',' << lastGpuMs << '\n';
+        csv_ << frameCounter_ << ',' << cpuSubmitMs << ',' << cpuFrameMs << ',' << swapWaitMs << ',' << eventPollMs << ',' << lastGpuMs << '\n';
     }
 
     printPeriodic();
@@ -197,7 +224,9 @@ void PerformanceProfiler::printPeriodic() {
         << "[Profiler] frames=" << frameCounter_
         << " fps=" << fps
         << " cpu_submit_avg_ms=" << cpuSubmitMs_.avg()
-        << " cpu_frame_avg_ms=" << cpuFrameMs_.avg();
+        << " cpu_frame_avg_ms=" << cpuFrameMs_.avg()
+        << " swap_wait_avg_ms=" << swapWaitMs_.avg()
+        << " event_poll_avg_ms=" << eventPollMs_.avg();
 
     if (gpuSupported_ && gpuFrameMs_.count > 0) {
         std::cout << " gpu_avg_ms=" << gpuFrameMs_.avg();
@@ -225,6 +254,14 @@ void PerformanceProfiler::printFinalReport() const {
         std::cout
             << "CPU frame ms (avg/min/max): "
             << cpuFrameMs_.avg() << "/" << cpuFrameMs_.min << "/" << cpuFrameMs_.max
+            << std::endl;
+        std::cout
+            << "Swap wait ms (avg/min/max): "
+            << swapWaitMs_.avg() << "/" << swapWaitMs_.min << "/" << swapWaitMs_.max
+            << std::endl;
+        std::cout
+            << "Event poll ms (avg/min/max): "
+            << eventPollMs_.avg() << "/" << eventPollMs_.min << "/" << eventPollMs_.max
             << std::endl;
     }
 

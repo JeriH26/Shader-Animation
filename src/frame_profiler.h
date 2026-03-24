@@ -13,6 +13,9 @@ public:
     void beginGpuTiming();
     void endGpuTiming();
     void markCpuSubmitEnd();
+    void markSwapBegin();
+    void markSwapEnd();
+    void markEventPollEnd();
     void endFrame();
 
     bool shouldStop() const;
